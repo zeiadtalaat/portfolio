@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeiad Talaat | Data Analyst Portfolio</title>
+<meta name="description" content="Zeiad Talaat - Aspiring Data Analyst and Computer Science Student">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#07091a;
+  --panel:rgba(18,22,55,.78);
+  --text:#f7f8ff;
+  --muted:#aab0d0;
+  --pink:#ff3e9d;
+  --cyan:#35e9ff;
+  --amber:#ffc857;
+  --indigo:#6d5dfc;
+  --line:rgba(255,255,255,.13);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:"DM Sans",sans-serif;
+  overflow-x:hidden;
+}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:20;
+  opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+::-webkit-scrollbar{width:9px}
+::-webkit-scrollbar-track{background:#080a1e}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--pink),var(--cyan));border-radius:20px}
+
+#particles{position:fixed;inset:0;z-index:-3}
+.glow{position:fixed;width:400px;height:400px;border-radius:50%;filter:blur(100px);opacity:.16;z-index:-2}
+.glow.one{background:var(--pink);left:-180px;top:15%}
+.glow.two{background:var(--cyan);right:-180px;top:55%}
+
+.loader{
+  position:fixed;inset:0;z-index:999;
+  display:grid;place-items:center;background:#07091a;
+  animation:hideLoader .8s ease 2s forwards;
+}
+.loader-inner{text-align:center}
+.initials{
+  font:800 7rem/1 "Syne";
+  background:linear-gradient(120deg,var(--cyan),var(--pink),var(--amber));
+  -webkit-background-clip:text;color:transparent;
+  animation:pulse 1s infinite alternate;
+}
+.loader-bar{width:230px;height:5px;background:#25294a;border-radius:20px;overflow:hidden;margin:25px auto}
+.loader-bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--pink),var(--amber));animation:load 2s ease forwards}
+@keyframes load{to{width:100%}}
+@keyframes hideLoader{to{opacity:0;visibility:hidden;pointer-events:none}}
+@keyframes pulse{to{filter:drop-shadow(0 0 25px var(--pink))}}
+
+.cursor-dot,.cursor-ring{
+  position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)
+}
+.cursor-dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px var(--cyan)}
+.cursor-ring{
+  width:34px;height:34px;border:1px solid var(--pink);border-radius:50%;
+  transition:.2s;
+}
+body.hovering .cursor-ring{width:52px;height:52px;border-color:var(--amber)}
+
+.nav{
+  position:fixed;top:18px;left:50%;z-index:100;
+  width:min(1160px,calc(100% - 30px));
+  padding:15px 22px;
+  display:flex;align-items:center;justify-content:space-between;
+  transform:translate(-50%,-160%);
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(10,13,37,.7);
+  backdrop-filter:blur(18px);
+  animation:navIn .8s ease 2.1s forwards;
+}
+@keyframes navIn{to{transform:translate(-50%,0)}}
+.logo{color:#fff;text-decoration:none;font:800 1.2rem "Syne"}
+.logo span{color:var(--pink)}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.83rem;position:relative}
+.nav-links a:after{
+  content:"";position:absolute;left:0;bottom:-7px;width:0;height:2px;
+  background:var(--cyan);transition:.3s
+}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover:after{width:100%}
+
+main{width:min(1160px,calc(100% - 32px));margin:auto}
+section{padding:110px 0;position:relative}
+.hero{
+  min-height:100vh;padding-top:180px;
+  display:grid;grid-template-columns:1.1fr .9fr;
+  gap:60px;align-items:center
+}
+.availability{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 13px;margin-bottom:22px;
+  border:1px solid rgba(53,233,255,.3);
+  border-radius:99px;color:var(--cyan);
+  background:rgba(53,233,255,.08);
+  font-size:.78rem
+}
+.availability:before{
+  content:"";width:7px;height:7px;border-radius:50%;
+  background:#5dff9a;box-shadow:0 0 12px #5dff9a
+}
+h1,h2,h3{font-family:"Syne",sans-serif}
+h1{font-size:clamp(3.5rem,8vw,7rem);line-height:.93;letter-spacing:-.08em}
+.shimmer{
+  background:linear-gradient(110deg,#fff 10%,var(--cyan) 35%,var(--pink) 55%,#fff 75%);
+  background-size:220% auto;
+  -webkit-background-clip:text;color:transparent;
+  animation:shimmer 5s linear infinite
+}
+@keyframes shimmer{to{background-position:220% center}}
+.hero h2{margin:23px 0;font-size:clamp(1.1rem,2vw,1.5rem);color:var(--muted);font-weight:500}
+.hero-copy p,.section-head p{color:var(--muted);line-height:1.8;max-width:650px}
+.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+.btn{
+  display:inline-block;padding:13px 20px;border-radius:10px;
+  text-decoration:none;font-weight:700;font-size:.88rem;transition:.3s
+}
+.btn.primary{background:var(--cyan);color:#080a1e;box-shadow:0 0 30px rgba(53,233,255,.25)}
+.btn.secondary{border:1px solid var(--line);color:#fff}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px #0006}
+
+.visual{min-height:440px;display:grid;place-items:center;position:relative}
+.orb{
+  position:absolute;width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,var(--pink),transparent 65%);
+  filter:blur(22px);opacity:.35
+}
+.float-card{
+  position:relative;width:min(370px,100%);min-height:370px;padding:28px;
+  border:1px solid #fff3;border-radius:28px;
+  background:linear-gradient(145deg,#2c2b68cc,#0c102bcc);
+  backdrop-filter:blur(16px);
+  box-shadow:0 25px 70px #0008;
+  animation:float 5s ease-in-out infinite;
+}
+@keyframes float{50%{transform:translateY(-17px) rotateY(8deg) rotateX(4deg)}}
+.ring{
+  position:absolute;inset:-25px;border:1px dashed var(--cyan);
+  border-radius:50%;animation:spin 18s linear infinite
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.avatar,.contact-avatar{
+  display:grid;place-items:center;border-radius:50%;
+  background:linear-gradient(135deg,var(--indigo),var(--pink));
+  box-shadow:0 0 40px #ff3e9d77;
+  font:800 2.3rem "Syne"
+}
+.avatar{width:105px;height:105px;margin-bottom:24px}
+.float-card h3{font-size:1.4rem}
+.float-card p{color:var(--muted);margin-top:8px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:38px}
+.stat{padding:13px 6px;text-align:center;border:1px solid var(--line);border-radius:12px}
+.stat strong{display:block;color:var(--amber);font:700 1.3rem "Syne"}
+.stat small{color:var(--muted);font-size:.67rem}
+
+.section-head{margin-bottom:40px}
+.section-kicker{color:var(--pink);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase}
+.section-head h2{font-size:clamp(2.3rem,5vw,4rem);margin:9px 0 12px}
+
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:42px}
+.skill{margin:20px 0}
+.skill-top{display:flex;justify-content:space-between;margin-bottom:8px}
+.skill-top span:last-child{color:var(--cyan);font-size:.8rem}
+.track{height:8px;background:#202542;border-radius:20px;overflow:hidden}
+.fill{
+  width:0;height:100%;border-radius:20px;
+  background:linear-gradient(90deg,var(--indigo),var(--pink),var(--cyan));
+  position:relative
+}
+.fill:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,#fff8,transparent);
+  animation:sweep 1.8s infinite
+}
+@keyframes sweep{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.chips{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start}
+.chip{
+  padding:10px 13px;border:1px solid var(--line);border-radius:99px;
+  color:#dce0ff;background:#ffffff08;transition:.3s
+}
+.chip:hover{transform:translateY(-7px);border-color:var(--cyan);color:var(--cyan)}
+
+.timeline{
+  border-left:2px solid transparent;
+  border-image:linear-gradient(var(--pink),var(--cyan),var(--amber)) 1;
+  padding-left:28px
+}
+.timeline-card,.project-card,.edu-card,.contact-card{
+  padding:25px;border:1px solid var(--line);border-radius:18px;
+  background:var(--panel);box-shadow:0 20px 60px #0006;
+  transition:.35s
+}
+.timeline-card{position:relative;margin-bottom:22px}
+.timeline-card:before{
+  content:"";position:absolute;left:-39px;top:28px;
+  width:13px;height:13px;border-radius:50%;
+  background:var(--cyan);box-shadow:0 0 18px var(--cyan)
+}
+.timeline-card:hover{transform:translateX(10px);border-color:var(--pink)}
+.card-meta{margin:8px 0 16px;color:var(--cyan);font-size:.82rem}
+.timeline-card p,.project-card p,.edu-card p{color:var(--muted);line-height:1.7}
+.badges{display:flex;gap:7px;flex-wrap:wrap;margin-top:17px}
+.badge{
+  padding:6px 9px;border:1px solid #ffc85755;border-radius:6px;
+  color:var(--amber);font-size:.7rem
+}
+
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.project-card{position:relative;overflow:hidden}
+.project-card:before{
+  content:"";position:absolute;top:0;left:-100%;width:100%;height:3px;
+  background:linear-gradient(90deg,var(--pink),var(--cyan),var(--amber));
+  transition:.5s
+}
+.project-card:hover:before{left:0}
+.project-card:hover{transform:translateY(-10px);border-color:#fff3}
+.project-icon{font-size:2rem;margin-bottom:15px}
+.project-card h3{font-size:1.2rem;margin-bottom:10px}
+.project-link{
+  display:inline-block;margin-top:20px;color:var(--cyan);
+  text-decoration:none;font-weight:700;transition:.3s
+}
+.project-link:hover{color:var(--pink);transform:translateX(5px)}
+
+.edu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.langs{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.lang{
+  padding:14px 18px;border-radius:12px;
+  background:#6d5dfc26;border:1px solid #6d5dfc66
+}
+.lang b{display:block;color:var(--cyan);margin-bottom:4px}
+.lang span{color:var(--muted);font-size:.8rem}
+
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.contact-list{display:grid;gap:13px}
+.contact-card{display:flex;gap:15px;align-items:center}
+.contact-card:hover{transform:translateX(9px);border-color:var(--cyan)}
+.contact-icon{font-size:1.35rem}
+.contact-card small{display:block;color:var(--muted);margin-bottom:3px}
+.contact-card a,.contact-card strong{color:#fff;text-decoration:none;word-break:break-word}
+.contact-visual{min-height:300px;display:grid;place-items:center;position:relative}
+.ripple,.ripple:before,.ripple:after{
+  position:absolute;width:150px;height:150px;border:1px solid var(--pink);
+  border-radius:50%;animation:ripple 3s infinite
+}
+.ripple:before,.ripple:after{content:"";inset:-1px}
+.ripple:before{animation-delay:1s}.ripple:after{animation-delay:2s}
+@keyframes ripple{0%{transform:scale(.6);opacity:.8}100%{transform:scale(2.2);opacity:0}}
+.contact-avatar{position:relative;z-index:2;width:130px;height:130px}
+
+.reveal{opacity:0;transform:translateY(35px);transition:.8s}
+.reveal.left{transform:translateX(-45px)}
+.reveal.right{transform:translateX(45px)}
+.reveal.show{opacity:1;transform:none}
+
+footer{
+  padding:35px 0;border-top:1px solid var(--line);
+  color:var(--muted);text-align:center;font-size:.85rem
+}
+
+@media(max-width:850px){
+  .hero,.skills-grid,.contact-wrap,.edu-grid{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr 1fr}
+  .hero{padding-top:150px}
+}
+@media(max-width:560px){
+  .nav-links{gap:9px}
+  .nav-links a{font-size:.7rem}
+  .nav-links a:nth-child(3),.nav-links a:nth-child(4){display:none}
+  section{padding:80px 0}
+  .hero{padding-top:130px}
+  .projects-grid{grid-template-columns:1fr}
+  h1{font-size:3.7rem}
+}
+</style>
+</head>
+
+<body>
+
+<div class="loader">
+  <div class="loader-inner">
+    <div class="initials">ZT</div>
+    <div class="loader-bar"><span></span></div>
+    <small>Loading portfolio...</small>
+  </div>
+</div>
+
+<canvas id="particles"></canvas>
+<div class="glow one"></div>
+<div class="glow two"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<nav class="nav">
+  <a href="#home" class="logo">Zeiad<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="hero-copy reveal left">
+    <div class="availability">Open to Data Analyst Internships</div>
+
+    <h1 class="shimmer">Zeiad<br>Talaat</h1>
+
+    <h2>Aspiring Data Analyst <span style="color:var(--pink)">|</span> Computer Science Student</h2>
+
+    <p>
+      Computer Science student at the Faculty of Computing and Artificial Intelligence,
+      Cairo University, with a strong interest in Data Analytics. Currently enrolled in
+      the Digital Egypt Pioneers Initiative, building practical skills in Python, Excel,
+      statistics, data cleaning, and exploratory data analysis.
+    </p>
+
+    <div class="actions">
+      <a class="btn primary" href="#projects">View Projects</a>
+      <a class="btn secondary" href="#contact">Contact Me</a>
+    </div>
+  </div>
+
+  <div class="visual reveal right">
+    <div class="orb"></div>
+
+    <div class="float-card">
+      <div class="ring"></div>
+      <div class="avatar">ZT</div>
+
+      <h3>Professional Data Analyst Trainee</h3>
+      <p>Digital Egypt Pioneers Initiative — DEPI</p>
+
+      <div class="stats">
+        <div class="stat">
+          <strong>2029</strong>
+          <small>Graduation</small>
+        </div>
+        <div class="stat">
+          <strong>IBM</strong>
+          <small>Certified</small>
+        </div>
+        <div class="stat">
+          <strong>Python</strong>
+          <small>Core Skill</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-head reveal">
+    <div class="section-kicker">Capabilities</div>
+    <h2>Skills & Competencies</h2>
+    <p>
+      Technical and interpersonal skills developed through academic study,
+      professional training, and practical data analysis projects.
+    </p>
+  </div>
+
+  <div class="skills-grid">
+    <div class="reveal left">
+      <div class="skill">
+        <div class="skill-top"><span>Python</span><span>90%</span></div>
+        <div class="track"><div class="fill" data-level="90"></div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-top"><span>Data Cleaning</span><span>85%</span></div>
+        <div class="track"><div class="fill" data-level="85"></div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-top"><span>Exploratory Data Analysis</span><span>82%</span></div>
+        <div class="track"><div class="fill" data-level="82"></div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-top"><span>Statistics</span><span>75%</span></div>
+        <div class="track"><div class="fill" data-level="75"></div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-top"><span>Microsoft Excel</span><span>78%</span></div>
+        <div class="track"><div class="fill" data-level="78"></div></div>
+      </div>
+    </div>
+
+    <div class="chips reveal right">
+      <span class="chip">Python</span>
+      <span class="chip">SQL</span>
+      <span class="chip">Pandas</span>
+      <span class="chip">NumPy</span>
+      <span class="chip">Data Cleaning</span>
+      <span class="chip">EDA</span>
+      <span class="chip">Statistics</span>
+      <span class="chip">Matplotlib</span>
+      <span class="chip">Data Visualization</span>
+      <span class="chip">Microsoft Excel</span>
+      <span class="chip">Power BI</span>
+      <span class="chip">SSMS</span>
+      <span class="chip">Problem Solving</span>
+      <span class="chip">Teamwork</span>
+      <span class="chip">Effective Communication</span>
+      <span class="chip">Fast Learner</span>
+      <span class="chip">Adaptability</span>
+      <span class="chip">Leadership</span>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-head reveal">
+    <div class="section-kicker">Professional Development</div>
+    <h2>Experience</h2>
+  </div>
+
+  <div class="timeline">
+    <article class="timeline-card reveal left">
+      <h3>Professional Data Analyst Trainee</h3>
+
+      <div class="card-meta">
+        Digital Egypt Pioneers Initiative (DEPI) · Cairo, Egypt
+      </div>
+
+      <p>
+        Developing practical skills in Python and Microsoft Excel for data analysis.
+        Learning data cleaning, Exploratory Data Analysis, and statistical concepts.
+        Strengthening analytical thinking and problem solving through hands-on exercises.
+      </p>
+
+      <div class="badges">
+        <span class="badge">Python</span>
+        <span class="badge">Microsoft Excel</span>
+        <span class="badge">Data Cleaning</span>
+        <span class="badge">EDA</span>
+        <span class="badge">Statistics</span>
+        <span class="badge">Problem Solving</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-head reveal">
+    <div class="section-kicker">Selected Work</div>
+    <h2>Projects</h2>
+    <p>
+      Practical data analysis work completed using Python, Pandas, Matplotlib,
+      and Exploratory Data Analysis techniques.
+    </p>
+  </div>
+
+  <div class="projects-grid">
+    <article class="project-card reveal">
+      <div class="project-icon">📊</div>
+
+      <h3>Superstore Sales Data Analysis</h3>
+
+      <div class="card-meta">Python</div>
+
+      <p>
+        Cleaned and prepared the Superstore dataset using Python and Pandas.
+        Handled missing values, duplicates, inconsistent data, and outliers.
+        Performed Exploratory Data Analysis to understand sales and profit data,
+        and created Matplotlib charts to explore sales performance and patterns.
+      </p>
+
+      <div class="badges">
+        <span class="badge">Python</span>
+        <span class="badge">Pandas</span>
+        <span class="badge">Matplotlib</span>
+        <span class="badge">EDA</span>
+      </div>
+
+      <a
+        class="project-link"
+        href="https://github.com/zeiadtalaat/Superstore-Data-Analysis"
+        target="_blank"
+        rel="noopener"
+      >
+        View Project on GitHub →
+      </a>
+    </article>
+
+    <article class="project-card reveal">
+      <div class="project-icon">🧹</div>
+
+      <h3>Data Cleaning Workflow</h3>
+
+      <p>
+        Prepared a real-world dataset by identifying and handling missing values,
+        duplicates, inconsistent data, and outliers before analysis.
+      </p>
+
+      <div class="badges">
+        <span class="badge">Pandas</span>
+        <span class="badge">Data Preparation</span>
+        <span class="badge">Data Quality</span>
+      </div>
+    </article>
+
+    <article class="project-card reveal">
+      <div class="project-icon">📈</div>
+
+      <h3>Sales Performance Visualization</h3>
+
+      <p>
+        Created charts using Matplotlib to explore sales performance, profit data,
+        and important patterns within the Superstore dataset.
+      </p>
+
+      <div class="badges">
+        <span class="badge">Matplotlib</span>
+        <span class="badge">Data Visualization</span>
+        <span class="badge">Business Insights</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-head reveal">
+    <div class="section-kicker">Background</div>
+    <h2>Education & Languages</h2>
+  </div>
+
+  <div class="edu-grid">
+    <article class="edu-card reveal left">
+      <div class="project-icon">🎓</div>
+
+      <h3>Bachelor's Degree in Computer Science</h3>
+
+      <div class="card-meta">Cairo University</div>
+
+      <p>
+        Faculty of Computing and Artificial Intelligence
+      </p>
+
+      <p>
+        Expected Graduation: June 2029
+      </p>
+    </article>
+
+    <article class="edu-card reveal right">
+      <div class="project-icon">🌍</div>
+
+      <h3>Languages</h3>
+
+      <div class="langs">
+        <div class="lang">
+          <b>Arabic</b>
+          <span>Native</span>
+        </div>
+
+        <div class="lang">
+          <b>English</b>
+          <span>Intermediate</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="certificates">
+  <div class="section-head reveal">
+    <div class="section-kicker">Achievements</div>
+    <h2>Certificates</h2>
+  </div>
+
+  <div class="edu-grid">
+    <article class="edu-card reveal">
+      <div class="project-icon">🏅</div>
+
+      <h3>Data Fundamentals</h3>
+
+      <div class="card-meta">
+        IBM SkillsBuild · Issued on September 10, 2026
+      </div>
+
+      <p>
+        Certificate issued by IBM SkillsBuild in recognition of successfully
+        satisfying the requirements for Data Fundamentals.
+      </p>
+
+      <div class="badges">
+        <span class="badge">IBM SkillsBuild</span>
+        <span class="badge">Data Fundamentals</span>
+        <span class="badge">Credly Verified</span>
+      </div>
+
+      <a
+        class="project-link"
+        href="https://www.credly.com/badges/ce08590b-080e-4693-980c-fe996b24cbe3"
+        target="_blank"
+        rel="noopener"
+      >
+        Verify Certificate on Credly →
+      </a>
+    </article>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-head reveal">
+    <div class="section-kicker">Let's Connect</div>
+    <h2>Start a Conversation</h2>
+    <p>
+      I am currently seeking internship opportunities where I can apply my
+      analytical, problem-solving, and data analysis skills.
+    </p>
+  </div>
+
+  <div class="contact-wrap">
+    <div class="contact-list reveal left">
+      <div class="contact-card">
+        <div class="contact-icon">📧</div>
+        <div>
+          <small>Email</small>
+          <a href="mailto:zeiad1talaat@gmail.com">
+            zeiad1talaat@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">📱</div>
+        <div>
+          <small>Phone</small>
+          <a href="tel:+201030922104">
+            +20 103 092 2104
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <div>
+          <small>Location</small>
+          <strong>Cairo, Egypt</strong>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">💼</div>
+        <div>
+          <small>LinkedIn</small>
+          <a
+            href="https://www.linkedin.com/in/zeiad-talaat-a5b5283a8"
+            target="_blank"
+            rel="noopener"
+          >
+            linkedin.com/in/zeiad-talaat-a5b5283a8
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">🐙</div>
+        <div>
+          <small>GitHub</small>
+          <a
+            href="https://github.com/zeiadtalaat"
+            target="_blank"
+            rel="noopener"
+          >
+            github.com/zeiadtalaat
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-visual reveal right">
+      <div class="ripple"></div>
+      <div class="contact-avatar">ZT</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © 2026 Zeiad Talaat · Aspiring Data Analyst
+</footer>
+
+<script>
+/* Particle Network */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+let particles = [];
+
+function resizeCanvas(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  particles = Array.from({
+    length: Math.min(95, Math.floor(window.innerWidth / 14))
+  }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - .5) * .45,
+    vy: (Math.random() - .5) * .45,
+    r: Math.random() * 2 + 1,
+    color: ["#35e9ff","#ff3e9d","#ffc857","#6d5dfc"][
+      Math.floor(Math.random() * 4)
+    ]
+  }));
+}
+
+function animateParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = p.color;
+    ctx.shadowBlur = 12;
+    ctx.shadowColor = p.color;
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  });
+
+  for(let i=0;i<particles.length;i++){
+    for(let j=i+1;j<particles.length;j++){
+      const a = particles[i];
+      const b = particles[j];
+      const distance = Math.hypot(a.x-b.x,a.y-b.y);
+
+      if(distance < 125){
+        ctx.beginPath();
+        ctx.moveTo(a.x,a.y);
+        ctx.lineTo(b.x,b.y);
+        ctx.strokeStyle = `rgba(100,160,255,${(1-distance/125)*.22})`;
+        ctx.stroke();
+      }
+    }
+  }
+
+  requestAnimationFrame(animateParticles);
+}
+
+window.addEventListener("resize",resizeCanvas);
+resizeCanvas();
+animateParticles();
+
+/* Custom Cursor */
+const dot = document.querySelector(".cursor-dot");
+const ring = document.querySelector(".cursor-ring");
+
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+let ringX = mouseX;
+let ringY = mouseY;
+
+window.addEventListener("mousemove", event => {
+  mouseX = event.clientX;
+  mouseY = event.clientY;
+
+  dot.style.left = mouseX + "px";
+  dot.style.top = mouseY + "px";
+});
+
+function animateCursor(){
+  ringX += (mouseX - ringX) * .14;
+  ringY += (mouseY - ringY) * .14;
+
+  ring.style.left = ringX + "px";
+  ring.style.top = ringY + "px";
+
+  requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+
+document.querySelectorAll("a,button,.chip,.project-card,.contact-card").forEach(item => {
+  item.addEventListener("mouseenter", () => {
+    document.body.classList.add("hovering");
+  });
+
+  item.addEventListener("mouseleave", () => {
+    document.body.classList.remove("hovering");
+  });
+});
+
+/* Scroll Reveal + Skill Bars */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+
+      entry.target.querySelectorAll?.(".fill").forEach(bar => {
+        bar.style.transition = "width 1.4s cubic-bezier(.2,.8,.2,1)";
+        bar.style.width = bar.dataset.level + "%";
+      });
+
+      observer.unobserve(entry.target);
+    }
+  });
+}, {threshold:.16});
+
+document.querySelectorAll(".reveal").forEach(element => {
+  observer.observe(element);
+});
+</script>
+
+</body>
+</html>
